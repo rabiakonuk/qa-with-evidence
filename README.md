@@ -1,6 +1,6 @@
 # QA with Evidence - a Case Study
 
-**Evidence-based question answering system** that responds exclusively by quoting corpus documents with exact character offsets. Built for the Doktar ML Engineer Case Study.
+**Evidence-based question answering system** that responds exclusively by quoting corpus documents with exact character offsets. Built for Doktar.
 
 ---
 
