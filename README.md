@@ -1,4 +1,4 @@
-# QA with Evidence - Case Study Report
+# QA with Evidence - a Case Study
 
 **Evidence-based question answering system** that responds exclusively by quoting corpus documents with exact character offsets. Built for the Doktar ML Engineer Case Study.
 
@@ -13,8 +13,6 @@ A conservative, evidence-grounded QA system that:
 - **Zero false positives** (3 correct abstentions) - Entity validation catches out-of-corpus questions
 
 **Approach**: Hybrid retrieval (BM25 + semantic) → MMR diversity → Entity validation → Verbatim assembly
-
-**All 11 case study requirements met and verified.**
 
 ---
 
