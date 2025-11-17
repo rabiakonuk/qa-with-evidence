@@ -59,8 +59,17 @@ def split_into_sentences(raw_text: str) -> List[Tuple[int, int, str]]:
         
         # Only keep substantial sentences (not just punctuation or whitespace)
         if text and len(text) > 2:
-            # Get the actual slice positions (not stripped)
-            sentences.append((start, end, text))
+            # Adjust offsets to match stripped text exactly
+            # Find where stripped text actually starts and ends in the original
+            original = match.group()
+            left_strip = len(original) - len(original.lstrip())
+            right_strip = len(original) - len(original.rstrip())
+            
+            adjusted_start = start + left_strip
+            adjusted_end = end - right_strip
+            
+            # Verify: raw_text[adjusted_start:adjusted_end] should equal text
+            sentences.append((adjusted_start, adjusted_end, text))
     
     return sentences
 

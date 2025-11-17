@@ -19,11 +19,16 @@ Usage:
 import sys
 import json
 import argparse
+import os
 from pathlib import Path
 from rich.console import Console
 from rich.prompt import Prompt
 from rich.panel import Panel
 from rich.table import Table
+
+# Force offline mode for transformers (use cached models only)
+os.environ['TRANSFORMERS_OFFLINE'] = '1'
+os.environ['HF_HUB_OFFLINE'] = '1'
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent))

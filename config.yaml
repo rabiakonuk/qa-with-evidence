@@ -17,7 +17,7 @@ selection:
   mmr_lambda: 0.70
   max_sim_threshold: 0.82
   min_support: 3
-  abstain_score_thresh: 0.70  # Balanced for 70-80% answer rate with good precision
+  abstain_score_thresh: 0.55  # Adjusted from 0.70 to improve answer rate (target 70-75%)
 
 embedding:
   model: sentence-transformers/all-MiniLM-L6-v2
