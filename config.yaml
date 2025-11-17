@@ -1,0 +1,25 @@
+paths:
+  corpus_dir: data/corpus_raw
+  sentences_file: artifacts/sentences.jsonl
+  embeddings_file: artifacts/embeddings.npy
+  index_file: artifacts/faiss_index.bin
+  meta_file: artifacts/meta.sqlite
+
+retrieval:
+  bm25_topk: 50
+  dense_topk: 50
+  alpha_lexical: 0.40
+  tag_boost_crop: 0.08
+  tag_boost_practice: 0.05
+
+selection:
+  rerank_topk: 20
+  mmr_lambda: 0.70
+  max_sim_threshold: 0.82
+  min_support: 3
+  abstain_score_thresh: 0.70  # Balanced for 70-80% answer rate with good precision
+
+embedding:
+  model: sentence-transformers/all-MiniLM-L6-v2
+  normalize: true
+

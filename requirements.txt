@@ -1,0 +1,13 @@
+sentence-transformers
+faiss-cpu
+rank-bm25
+numpy
+pandas
+regex
+pyyaml
+sqlite-utils
+typer
+tqdm
+rich
+pytest
+

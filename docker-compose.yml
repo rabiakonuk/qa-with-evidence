@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  qa-with-evidence:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: qa-with-evidence:latest
+    container_name: qa-with-evidence
+    
+    # Resource limits for production
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 4G
+        reservations:
+          cpus: '2.0'
+          memory: 2G
+    
+    # Mount artifacts volume for persistence
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./data:/app/data:ro  # Read-only corpus
+    
+    # Environment variables
+    environment:
+      - PYTHONUNBUFFERED=1
+      - LOG_LEVEL=INFO
+    
+    # Keep container running for interactive use
+    stdin_open: true
+    tty: true
+    
+    # Healthcheck
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+
+  # Optional: API service (future enhancement)
+  # qa-api:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8000:8000"
+  #   command: uvicorn src.api:app --host 0.0.0.0 --port 8000
+  #   volumes:
+  #     - ./artifacts:/app/artifacts:ro
+  #   depends_on:
+  #     - qa-with-evidence
+
+networks:
+  default:
+    name: qa-network
+
